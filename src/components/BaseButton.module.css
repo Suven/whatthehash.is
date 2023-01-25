@@ -1,0 +1,63 @@
+.button {
+  display: inline-block;
+  padding: var(--s-regular) var(--s-lg);
+  background-color: var(--c-fill-secondary);
+  color: var(--c-text-base);
+  border-radius: var(--r-regular);
+  cursor: pointer;
+  /* For the hover effect */
+  overflow: hidden;
+  position: relative;
+  transition: 200ms color ease-in-out;
+  text-decoration: none;
+}
+
+.text {
+  position: relative;
+  z-index: 2;
+}
+
+.effect {
+  position: absolute;
+  display: block;
+  width: 50%;
+  height: 200%;
+  top: -50%;
+  background-color: var(--c-fill-accent);
+  z-index: 1;
+  border-radius: 999rem;
+  transform: translateY(100%);
+}
+
+.button:hover {
+  color: var(--c-text-secondary);
+}
+
+.button:hover .effect {
+  transform: translateY(0);
+}
+
+.effect:nth-of-type(1) {
+  transition: 200ms transform ease-in-out;
+  left: -5%;
+}
+
+.effect:nth-of-type(2) {
+  transition: 300ms transform ease-in-out;
+  left: 29%;
+}
+
+.effect:nth-of-type(3) {
+  transition: 400ms transform ease-in-out;
+  left: 40%;
+}
+
+.effect:nth-of-type(4) {
+  transition: 500ms transform ease-in-out;
+  left: 72%;
+}
+
+.effect:nth-of-type(5) {
+  transition: 600ms transform ease-in-out;
+  left: 105%;
+}

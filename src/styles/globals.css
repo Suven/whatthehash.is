@@ -1,107 +1,108 @@
-:root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
-
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+/* Global variables for a light theme */
+html {
+  /* colors */
+  --base: #333;
+  --accent: #c43b58;
+  --accentAlt: hsl(347, 54%, 61%);
+  --secondary: hsl(0, 0%, 92%);
+  --contrast: #fefefe;
+  /* fonts */
+  --font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  /* font-sizes */
+  --f-xs: 0.5rem;
+  --f-sm: 0.75rem;
+  --f-regular: 1rem;
+  --f-lg: 1.5rem;
+  --f-xl: 1.75rem;
+  /* radiuses */
+  --r-regular: 1rem;
+  /* spacings */
+  --s-regular: 0.5rem;
+  --s-lg: 0.75rem;
+  --s-xl: 2rem;
+  --s-xxl: 3rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+html ::selection {
+  background-color: var(--accentAlt);
+  color: var(--contrast);
+}
 
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
-
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
-  }
+body {
+  /* Mapping the base-colors to easy to use variables */
+  --c-fill-accent: var(--accent);
+  --c-fill-accent-alt: var(--accentAlt);
+  --c-fill-secondary: var(--secondary);
+  --c-text-base: var(--base);
+  --c-text-accent: var(--accent);
+  --c-text-secondary: var(--contrast);
+  --c-stroke-base: var(--secondary);
+  /* Most basic styles */
+  background-color: var(--contrast);
+  color: var(--c-text-base);
+  font-family: var(--font-base);
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  outline-color: var(--accent);
+  accent-color: var(--accent);
 }
 
 html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+body,
+* {
+  margin: 0;
+  padding: 0;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: var(--c-text-accent);
+  font-family: var(--font-accent);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+h1 {
+  font-size: var(--f-xl);
+  font-weight: bolder;
+  margin: var(--s-lg) 0 var(--s-xxl) 0;
+  position: relative;
+}
+
+h1:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: -1rem;
+  width: 4.5rem;
+  height: 4px;
+  background-color: var(--c-fill-accent);
+}
+
+h1 strong {
+  font-family: var(--font-accent);
+  color: var(--c-text-accent);
+}
+
+h2 {
+  font-size: var(--f-xl);
+  font-weight: bold;
+  margin: var(--s-regular) 0 var(--s-regular) 0;
+}
+
+h3 {
+  font-size: var(--f-xl);
+  font-weight: regular;
+  margin: var(--s-regular) 0 var(--s-regular) 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--s-xxl) var(--s-regular);
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    padding: var(--s-xl);
   }
 }
