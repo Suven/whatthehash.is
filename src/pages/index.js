@@ -22,10 +22,10 @@ export default function Home() {
           cryptic latitude and longitude degrees: <strong>geohashes</strong>!
         </p>
         <p>
-          Instead of <code>50.95458984, 6.96533203</code> it's just{" "}
-          <code>u1hcy</code>. And even better: If you don't need it to be that
-          precise, just omit some of its end. <code>u1hc</code> is still a valid
-          geohash!
+          Instead of <code>50.95458984, 6.96533203</code> it&apos;s just{" "}
+          <code>u1hcy</code>. And even better: If you don&apos;t need it to be
+          that precise, just omit some of its end. <code>u1hc</code> is still a
+          valid geohash!
         </p>
         <div className={styles.buttonList}>
           <div className={styles.stackVert}>
@@ -44,8 +44,8 @@ export default function Home() {
         <p>
           Not conviced? You could also try our geophrases instead of geohashes.
           It's totally not compareable to what3words, our algorith is
-          supersimple (less then 40 lines of code), doesn't require an API and
-          our custom wordlist is open source.
+          supersimple (less then 40 lines of code), doesn&apos;t require an API
+          and our custom wordlist is open source.
         </p>
         <div className={styles.buttonList}>
           <div className={styles.stackVert}>
@@ -67,7 +67,7 @@ export default function Home() {
         <p>
           By the way... this is a non commercial spare time project, without
           commercial interest and done just for educational purposes. The code
-          can be found on <a href="TODO">GitHub</a>. Please don't sue me.
+          can be found on <a href="TODO">GitHub</a>. Please don&apos;t sue me.
         </p>
         <br />
         <br />

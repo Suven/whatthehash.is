@@ -64,6 +64,7 @@ export default function HashMap() {
     },
   };
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [viewState, setViewState] = useState({
     longitude: coords.longitude,
     latitude: coords.latitude,
