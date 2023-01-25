@@ -43,7 +43,7 @@ export default function Home() {
         </div>
         <p>
           Not conviced? You could also try our geophrases instead of geohashes.
-          It's totally not compareable to what3words, our algorith is
+          It&apos;s totally not compareable to what3words, our algorith is
           supersimple (less then 40 lines of code), doesn&apos;t require an API
           and our custom wordlist is open source.
         </p>
