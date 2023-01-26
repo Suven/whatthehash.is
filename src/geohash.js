@@ -1,5 +1,5 @@
 import ngeo from "ngeohash";
-import dictonary from "./dictonary";
+import { toPhrase, fromPhrase } from "@/dictonary";
 
 const dict = "0123456789bcdefghjkmnpqrstuvwxyz";
 
@@ -39,11 +39,11 @@ const fromInt = (i) => {
 };
 
 const geohashToPhrase = (geohash) => {
-  return dictonary.toPhrase(toInt(geohash));
+  return toPhrase(toInt(geohash));
 };
 
 const phraseToGeohash = (phrase) => {
-  return fromInt(dictonary.fromPhrase(phrase));
+  return fromInt(fromPhrase(phrase));
 };
 
 const geohashToCoords = (geohash) => ngeo.decode(geohash);
