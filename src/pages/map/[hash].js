@@ -13,13 +13,14 @@ export default function MapPage() {
   const router = useRouter();
   const { hash } = router.query;
   const isHash = isGeohash(hash);
-  const usePhrase = !isHash && hash !== undefined;
-  const geohash = isHash ? hash : !!hash ? phraseToGeohash(hash) : "";
+  const usePhrase =
+    router.query?.hash?.substr(0, 1) === "@" && hash !== undefined;
+  const geohash = isHash ? hash : !!hash ? phraseToGeohash(hash.substr(1)) : "";
   const geophrase = !isHash ? hash : !!hash ? geohashToPhrase(hash) : "";
 
   const updateLocation = (newHash) => {
     usePhrase
-      ? router.push(`/map/${geohashToPhrase(newHash).toLowerCase()}`)
+      ? router.push(`/map/@${geohashToPhrase(newHash).toLowerCase()}`)
       : router.push(`/map/${newHash}`);
   };
 
