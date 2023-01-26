@@ -67,7 +67,9 @@ export default function Home() {
         <p>
           By the way... this is a non commercial spare time project, without
           commercial interest and done just for educational purposes. The code
-          can be found on <a href="TODO">GitHub</a>. Please don&apos;t sue me.
+          can be found on{" "}
+          <a href="https://github.com/Suven/whatthehash.is">GitHub</a>. Please
+          don&apos;t sue me.
         </p>
         <br />
         <br />
