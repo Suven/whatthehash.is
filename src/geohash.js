@@ -3,6 +3,18 @@ import dictonary from "./dictonary";
 
 const dict = "0123456789bcdefghjkmnpqrstuvwxyz";
 
+const precToZoom = {
+  1: { z: 1, label: "2500km" },
+  2: { z: 4, label: "630km" },
+  3: { z: 6, label: "78km" },
+  4: { z: 9, label: "20km" },
+  5: { z: 11, label: "2.4km" },
+  6: { z: 14, label: "610m" },
+  7: { z: 16, label: "76m" },
+  8: { z: 18, label: "19m" },
+  9: { z: 20, label: "2m" },
+};
+
 const toInt = (geohash) => {
   // We add the fake-end to also process trailing 0's
   // since 00 is a more specific geohash then 0
@@ -37,7 +49,16 @@ const phraseToGeohash = (phrase) => {
 const geohashToCoords = (geohash) => ngeo.decode(geohash);
 const coordsToGeohash = (coords, precision) =>
   ngeo.encode(coords.lat, coords.long, precision);
-
 const geohashToBounds = (geohash) => ngeo.decode_bbox(geohash);
+const isGeohash = (geohash) =>
+  /^[0123456789bcdefghjkmnpqrstuvwxyz]+$/gm.test(geohash);
 
-export { geohashToBounds, phraseToGeohash, geohashToPhrase, geohashToCoords, coordsToGeohash };
+export {
+  precToZoom,
+  isGeohash,
+  geohashToBounds,
+  phraseToGeohash,
+  geohashToPhrase,
+  geohashToCoords,
+  coordsToGeohash,
+};
