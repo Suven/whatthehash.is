@@ -2,13 +2,14 @@ import Map, { Source, Layer } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import {
   precToZoom,
+  zoomToPrec,
   geohashToCoords,
   geohashToBounds,
   coordsToGeohash,
 } from "@/geohash";
 import { useState, useCallback } from "react";
 
-export default function HashMap({ geohash }) {
+export default function HashMap({ geohash, hashChanged }) {
   const zoom = precToZoom[geohash.length].z;
   const coords = geohashToCoords(geohash);
   const bounds = geohashToBounds(geohash);
@@ -50,6 +51,19 @@ export default function HashMap({ geohash }) {
     zoom,
   });
 
+  const handleMove = (evt) => {
+    setViewState(evt.viewState);
+    const coords = evt.viewState;
+    const hashLenghth = zoomToPrec(coords.zoom);
+    const hash = coordsToGeohash(
+      { lat: coords.latitude, long: coords.longitude },
+      hashLenghth
+    );
+    if (hash !== geohash) {
+      hashChanged(hash);
+    }
+  };
+
   return (
     <div>
       <style jsx global>{`
@@ -68,7 +82,7 @@ export default function HashMap({ geohash }) {
       <Map
         mapLib={maplibregl}
         {...viewState}
-        onMove={(evt) => setViewState(evt.viewState)}
+        onMove={handleMove}
         style={{ width: "90vw", height: "80vh" }}
         mapStyle="https://api.maptiler.com/maps/c4578a80-2b77-43a2-b06c-8fbba6c213bb/style.json?key=7H7bZx7XIYFKz5WxU7zl"
       >

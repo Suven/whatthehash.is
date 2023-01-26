@@ -15,6 +15,26 @@ const precToZoom = {
   9: { z: 20, label: "2m" },
 };
 
+const zoomToPrec = (z) => {
+  return z >= 20
+    ? 9
+    : z >= 18
+    ? 8
+    : z >= 16
+    ? 7
+    : z >= 14
+    ? 6
+    : z >= 11
+    ? 5
+    : z >= 9
+    ? 4
+    : z >= 6
+    ? 3
+    : z >= 4
+    ? 2
+    : 1;
+};
+
 const toInt = (geohash) => {
   // We add the fake-end to also process trailing 0's
   // since 00 is a more specific geohash then 0
@@ -55,6 +75,7 @@ const isGeohash = (geohash) =>
 
 export {
   precToZoom,
+  zoomToPrec,
   isGeohash,
   geohashToBounds,
   phraseToGeohash,

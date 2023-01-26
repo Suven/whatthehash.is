@@ -14,14 +14,20 @@ export default function MapPage() {
   const { hash } = router.query;
   const isHash = isGeohash(hash);
   const usePhrase = !isHash && hash !== undefined;
-  const geohash = isHash ? hash : hash ? phraseToGeohash(hash) : "";
-  const geophrase = !isHash ? hash : hash ? geohashToPhrase(hash) : "";
+  const geohash = isHash ? hash : !!hash ? phraseToGeohash(hash) : "";
+  const geophrase = !isHash ? hash : !!hash ? geohashToPhrase(hash) : "";
+
+  const updateLocation = (newHash) => {
+    usePhrase
+      ? router.push(`/map/${geohashToPhrase(newHash).toLowerCase()}`)
+      : router.push(`/map/${newHash}`);
+  };
 
   return (
     <div className={styles.container}>
       <h1 className={styles.headline}>
         WhatThe
-        <HashLabel geohash={hash || ''} usePhrase={usePhrase} />
+        <HashLabel geohash={hash || ""} usePhrase={usePhrase} />
         ?!
       </h1>
       <div className={styles.info}>
@@ -37,7 +43,7 @@ export default function MapPage() {
       </div>
       {hash && (
         <div className={styles.map}>
-          <HashMap geohash={geohash} />
+          <HashMap geohash={geohash} hashChanged={updateLocation} />
           <PrecisionLabel geohash={geohash} className={styles.precision} />
         </div>
       )}
