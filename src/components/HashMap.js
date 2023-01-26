@@ -54,7 +54,7 @@ export default function HashMap({ geohash, hashChanged }) {
   const handleMove = (evt) => {
     setViewState(evt.viewState);
     const coords = evt.viewState;
-    const hashLenghth = zoomToPrec(coords.zoom);
+    const hashLenghth = zoomToPrec(Math.floor(coords.zoom) + 1);
     const hash = coordsToGeohash(
       { lat: coords.latitude, long: coords.longitude },
       hashLenghth
